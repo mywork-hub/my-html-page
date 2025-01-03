@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player with Working Audio Button</title>
+    <title>Video Player with Audio Tracks</title>
     <!-- Replace with your GitHub raw link for PlayerJS -->
     <script src="https://cdn.jsdelivr.net/gh/mywork-hub/playerjs-hostn/player.js"></script>
 </head>
@@ -10,31 +10,27 @@
     <div id="videoPlayer" style="width: 100%; height: 400px; background: black;"></div>
 
     <script>
-        // Initialize the Player with Proper Audio Track Management
         var player = new Playerjs({
             id: "videoPlayer",
-            file: [
-                { 
-                    title: "English", 
-                    file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4",
-                    audio: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3" 
-                },
-                { 
-                    title: "Francais", 
-                    file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4",
-                    audio: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3" 
-                }
-            ],
+            file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4", // Single video file for all audio tracks
             title: "Team Dronix: Trailer", 
             poster: "https://your-image-url/thumbnail.jpg", 
             preview: "https://your-image-url/preview-sprite.jpg",
 
-            // ✅ Ensure the audio button shows up here
-            track: 1, // Enables audio and subtitle track selection
+            // ✅ Multiple audio tracks within the same video
+            audio: [
+                { file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3", label: "English" },
+                { file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3", label: "Francais" }
+            ],
+
+            // ✅ Subtitle files
             subtitles: [
                 { file: "https://your-url/subtitle-en.vtt", label: "English" },
                 { file: "https://your-url/subtitle-fr.vtt", label: "French" }
-            ]
+            ],
+
+            // ✅ Enable the audio button to control tracks properly
+            track: 1 
         });
     </script>
 </body>
