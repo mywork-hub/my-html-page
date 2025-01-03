@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Advanced Video Player with Audio Tracks</title>
+    <title>Video Player with Working Audio Button</title>
     <!-- Replace with your GitHub raw link for PlayerJS -->
     <script src="https://cdn.jsdelivr.net/gh/mywork-hub/playerjs-hostn/player.js"></script>
 </head>
@@ -10,28 +10,31 @@
     <div id="videoPlayer" style="width: 100%; height: 400px; background: black;"></div>
 
     <script>
-        // Initialize the Player with Audio Tracks and Subtitles
+        // Initialize the Player with Proper Audio Track Management
         var player = new Playerjs({
             id: "videoPlayer",
-            file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4", // Replace with your video link
-            title: "Team Dronix: Trailer", // Video title
-            poster: "https://your-image-url/thumbnail.jpg", // Thumbnail before the video starts
-            preview: "https://your-image-url/preview-sprite.jpg", // Thumbnails for the progress bar
+            file: [
+                { 
+                    title: "English", 
+                    file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4",
+                    audio: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3" 
+                },
+                { 
+                    title: "Francais", 
+                    file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4",
+                    audio: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3" 
+                }
+            ],
+            title: "Team Dronix: Trailer", 
+            poster: "https://your-image-url/thumbnail.jpg", 
+            preview: "https://your-image-url/preview-sprite.jpg",
 
-            // ✅ Multiple Subtitle Files
+            // ✅ Ensure the audio button shows up here
+            track: 1, // Enables audio and subtitle track selection
             subtitles: [
                 { file: "https://your-url/subtitle-en.vtt", label: "English" },
                 { file: "https://your-url/subtitle-fr.vtt", label: "French" }
-            ],
-
-            // ✅ Multiple Audio Tracks (IMPORTANT FIX)
-            audio: [
-                { file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3", label: "English" },
-                { file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3", label: "Francais" }
-            ],
-
-            // ✅ Ensure audio track selection is visible
-            settings: ["quality", "speed", "audio", "subtitles"] // Enables audio track selection in the menu
+            ]
         });
     </script>
 </body>
