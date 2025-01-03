@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player with Custom Audio Button</title>
+    <title>Video Player with Audio Selection</title>
     <script src="https://cdn.jsdelivr.net/gh/mywork-hub/playerjs-hostn/player.js"></script>
 </head>
 <body>
     <!-- Video Player Container -->
-    <div id="videoPlayer" style="width: 100%; height: 400px; background: black;"></div>
+    <div id="videoPlayer" style="width: 100%; height: 400px;"></div>
 
-    <!-- Custom Audio Track Switch Button -->
-    <button onclick="switchAudio(0)">English Audio</button>
-    <button onclick="switchAudio(1)">Francais Audio</button>
+    <!-- Audio Track Switch Buttons -->
+    <button onclick="switchVideo('English')">English</button>
+    <button onclick="switchVideo('Francais')">Francais</button>
 
     <script>
-        // Initialize the Player with default video and audio
         var player = new Playerjs({
             id: "videoPlayer",
             file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4", 
-            poster: "https://your-image-url/thumbnail.jpg", 
-            preview: "https://your-image-url/preview-sprite.jpg",
             title: "Team Dronix: Trailer"
         });
 
-        // Custom Function to Switch Audio
-        var audioTracks = [
-            "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3",
-            "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3"
-        ];
-
-        function switchAudio(trackIndex) {
-            player.api("audio", audioTracks[trackIndex]);  // Changes only the audio file
+        function switchVideo(language) {
+            if (language === 'English') {
+                player.api("file", "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4");
+            } else if (language === 'Francais') {
+                player.api("file", "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20DroniX%20%20Bande%20Annonce%20%F0%9F%92%A5%20-%20Team%20DroniX%20(720p,%20h264).mp4");
+            }
         }
     </script>
 </body>
