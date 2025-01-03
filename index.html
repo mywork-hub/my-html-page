@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player with Audio Tracks</title>
-    <!-- Replace with your GitHub raw link for PlayerJS -->
+    <title>Video Player with Custom Audio Button</title>
     <script src="https://cdn.jsdelivr.net/gh/mywork-hub/playerjs-hostn/player.js"></script>
 </head>
 <body>
     <!-- Video Player Container -->
     <div id="videoPlayer" style="width: 100%; height: 400px; background: black;"></div>
 
+    <!-- Custom Audio Track Switch Button -->
+    <button onclick="switchAudio(0)">English Audio</button>
+    <button onclick="switchAudio(1)">Francais Audio</button>
+
     <script>
+        // Initialize the Player with default video and audio
         var player = new Playerjs({
             id: "videoPlayer",
-            file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4", // Single video file for all audio tracks
-            title: "Team Dronix: Trailer", 
+            file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4", 
             poster: "https://your-image-url/thumbnail.jpg", 
             preview: "https://your-image-url/preview-sprite.jpg",
-
-            // ✅ Multiple audio tracks within the same video
-            audio: [
-                { file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3", label: "English" },
-                { file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3", label: "Francais" }
-            ],
-
-            // ✅ Subtitle files
-            subtitles: [
-                { file: "https://your-url/subtitle-en.vtt", label: "English" },
-                { file: "https://your-url/subtitle-fr.vtt", label: "French" }
-            ],
-
-            // ✅ Enable the audio button to control tracks properly
-            track: 1 
+            title: "Team Dronix: Trailer"
         });
+
+        // Custom Function to Switch Audio
+        var audioTracks = [
+            "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3",
+            "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3"
+        ];
+
+        function switchAudio(trackIndex) {
+            player.api("audio", audioTracks[trackIndex]);  // Changes only the audio file
+        }
     </script>
 </body>
 </html>
