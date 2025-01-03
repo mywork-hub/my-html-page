@@ -2,30 +2,39 @@
 <html>
 <head>
     <title>Video Player with Audio Selection</title>
+    <!-- Replace with your PlayerJS link -->
     <script src="https://cdn.jsdelivr.net/gh/mywork-hub/playerjs-hostn/player.js"></script>
 </head>
 <body>
     <!-- Video Player Container -->
     <div id="videoPlayer" style="width: 100%; height: 400px;"></div>
 
-    <!-- Audio Track Switch Buttons -->
-    <button onclick="switchVideo('English')">English</button>
-    <button onclick="switchVideo('Francais')">Francais</button>
-
     <script>
         var player = new Playerjs({
             id: "videoPlayer",
-            file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4", 
-            title: "Team Dronix: Trailer"
-        });
+            file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4",  // Main video link
+            title: "Team Dronix: Trailer",
+            poster: "https://your-image-url/thumbnail.jpg", 
+            preview: "https://your-image-url/preview-sprite.jpg",
 
-        function switchVideo(language) {
-            if (language === 'English') {
-                player.api("file", "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Video.mp4");
-            } else if (language === 'Francais') {
-                player.api("file", "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20DroniX%20%20Bande%20Annonce%20%F0%9F%92%A5%20-%20Team%20DroniX%20(720p,%20h264).mp4");
-            }
-        }
+            // ✅ Adding settings for quality, subtitles, and audio
+            settings: ["quality", "subtitles", "audio"],
+
+            // ✅ Multiple Audio Tracks in the Settings Menu
+            audio: {
+                values: [
+                    { title: "English", file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20En.mp3" },
+                    { title: "Francais", file: "https://github.com/mywork-hub/Team-dronix/raw/refs/heads/main/Team%20dronix%20Trailer%20Audio%20Fr.mp3" }
+                ],
+                default: 0  // Default to the first audio track (English)
+            },
+
+            // ✅ Subtitle Configuration (Optional)
+            subtitles: [
+                { file: "https://your-url/subtitle-en.vtt", label: "English" },
+                { file: "https://your-url/subtitle-fr.vtt", label: "French" }
+            ]
+        });
     </script>
 </body>
 </html>
