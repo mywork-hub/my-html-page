@@ -3,71 +3,19 @@
 <head>
     <title>Advanced Video Player</title>
     <!-- Replace with your GitHub raw link for PlayerJS -->
-    <script src="https://cdn.jsdelivr.net/gh/mywork-hub/playerjs-hostn/player.js"></script>
-    <style>
-        /* Style for the logo */
-        .player-logo {
-            position: absolute;
-            bottom: 80px;
-            right: 10px;
-            width: 80px;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            z-index: 1000;
-        }
-
-        /* Style for the description */
-        .player-description {
-            position: absolute;
-            bottom: 40px;
-            right: 10px;
-            font-size: 18px;
-            color: white;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            z-index: 1000;
-        }
-
-        /* Style for the animated rated text */
-        .rated-text {
-            position: absolute;
-            top: 10px;
-            left: 5%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            opacity: 1;
-            z-index: 1000;
-            animation: fadeOut 10s forwards;
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-    </style>
+    <script src="https://raw.githubusercontent.com/your-username/your-repo/main/player.js"></script>
 </head>
 <body>
     <!-- Video Player Container -->
-    <div id="videoPlayer" style="width: 100%; height: 400px; background: black; position: relative;"></div>
-
-    <!-- Logo Image -->
-    <img src="https://raw.githubusercontent.com/mywork-hub/Lego-Friends/refs/heads/main/AAAABaebRJakUe52PAaoiy-uIZ369gC6S8as6MsKdmWvTKLmzvxwZ81Ih2mp40MlNUx8CVbWSQ8XU8FWVt20iANhG3_JVd2HQZqtAuAj1Vc7rY13.png" class="player-logo" id="playerLogo">
-
-    <!-- Description -->
-    <div class="player-description" id="playerDescription">Paused - Enjoy the show!</div>
-
-    <!-- Animated Rated Text -->
-    <div class="rated-text">12+</div>
+    <div id="videoPlayer" style="width: 100%; height: 400px; background: black;"></div>
 
     <script>
         // Initialize the Player with Advanced Features
         var player = new Playerjs({
             id: "videoPlayer",
-            file: "https://github.com/mywork-hub/Lego-Friends/raw/refs/heads/main/y2mate.com%20-%20Girls%20on%20a%20mission%20in%20Heartlake%20City%20%20LEGO%20Friends%20%20Mini%20Movie_720pFH.mp4", // Replace with your video link
-            title: "Lego friends: Trailer", // Video title
-            poster: "https://raw.githubusercontent.com/mywork-hub/Lego-Friends/refs/heads/main/saveitfrom.com-cm4WEu06BVs-full.jpg", // Thumbnail before the video starts
+            file: "https://your-video-url/video.mp4", // Replace with your video link
+            title: "My Awesome Video", // Video title
+            poster: "https://your-image-url/thumbnail.jpg", // Thumbnail before the video starts
             preview: "https://your-image-url/preview-sprite.jpg", // Thumbnails for the progress bar
 
             // ✅ Multiple Subtitle Files
@@ -82,30 +30,13 @@
                 { file: "https://your-url/audio-track2.mp3", label: "Spanish Audio" }
             ]
         });
-// ✅ Disable Right Click on the Video Player
+
+        // ✅ Disable Right Click on the Video Player
         document.getElementById('videoPlayer').oncontextmenu = function(event) {
             event.preventDefault(); // Block the default right-click menu
             alert('Right-click is disabled on this player!'); // Optional alert message
             return false;
-        // ✅ Show Logo and Description After 5 Seconds When Paused
-        var logo = document.getElementById("playerLogo");
-        var description = document.getElementById("playerDescription");
-        var pauseTimer;
-
-        player.api("onpause", function(){
-            clearTimeout(pauseTimer); // Clear any previous timers
-            pauseTimer = setTimeout(function(){
-                logo.style.opacity = "1";
-                description.style.opacity = "1";
-            }, 5000); // Show logo and description after 5 seconds
-        });
-
-        // ✅ Hide Logo and Description When Playing
-        player.api("onplay", function(){
-            clearTimeout(pauseTimer); // Stop the timer if video plays
-            logo.style.opacity = "0";
-            description.style.opacity = "0";
-        });
+        };
     </script>
 </body>
 </html>
