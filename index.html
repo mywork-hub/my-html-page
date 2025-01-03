@@ -82,7 +82,11 @@
                 { file: "https://your-url/audio-track2.mp3", label: "Spanish Audio" }
             ]
         });
-
+// ✅ Disable Right Click on the Video Player
+        document.getElementById('videoPlayer').oncontextmenu = function(event) {
+            event.preventDefault(); // Block the default right-click menu
+            alert('Right-click is disabled on this player!'); // Optional alert message
+            return false;
         // ✅ Show Logo and Description After 5 Seconds When Paused
         var logo = document.getElementById("playerLogo");
         var description = document.getElementById("playerDescription");
